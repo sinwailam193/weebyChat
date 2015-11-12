@@ -1,5 +1,4 @@
 var User = require('./mongo').User
-var Socket = require('./socket');
 
 function isLoggedIn(req, res, next){
   if(req.isAuthenticated()){
@@ -38,7 +37,6 @@ module.exports = function(app, passport, io){
   })
 
   app.get('/chat', isLoggedIn, function(req, res){
-    Socket(io, req.user);
     res.render('chat'); //req.user is populated when we went through passport js to authenticate users
   });
 
@@ -48,6 +46,13 @@ module.exports = function(app, passport, io){
     // Successful authentication, redirect chat page.
     res.redirect('/chat');
   });
+
+  app.get('/userInfo', function(req, res){
+    if(req.user){
+      var user = req.user.facebookUser.username || req.user.user.username;
+      res.json(user);
+    }
+  })
 
   app.post('/signup', passport.authenticate('local-signup', {
     successRedirect: '/chat',
@@ -60,6 +65,4 @@ module.exports = function(app, passport, io){
     failureRedirect: '/login',
     failureFlash: true
   }));
-
-
 };

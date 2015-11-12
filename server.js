@@ -33,5 +33,6 @@ app.set('views', __dirname + '/views')// change the file path of the template
 app.set('view engine', 'ejs');
 
 require('./server/route')(app, passport, io);
+require('./server/socket')(io);
 
 console.log("listening on " + port);

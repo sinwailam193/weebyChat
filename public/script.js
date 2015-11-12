@@ -1,5 +1,12 @@
 var socket = io.connect();
 
+socket.on('connect', function(){
+  // once socket is connected and we're on the page, we make a get reques to the server to retireve user's username and then emit add user to the server.
+  $.get( "/userInfo", function( data ) {
+    socket.emit('adduser', data);
+  });
+});
+
 socket.on('updateRooms', function(rooms, roomName){
   $('#subtitle').html('');
   $('#rooms').html('');
@@ -10,11 +17,6 @@ socket.on('updateRooms', function(rooms, roomName){
 });
 
 socket.on('updateChat', function (username, data) {
-  $('#chatArea').val(username + ": " + data + "\n");
-});
-
-socket.on('addMessage', function(username, data){
-  console.log(username, data);
   $('#chatArea').val($('#chatArea').val() + username + ": " + data + "\n");
 });
 
@@ -30,7 +32,6 @@ $(function(){
       socket.emit('sendChat', message);
     }
   });
-
 });
 
 
