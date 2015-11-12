@@ -7,12 +7,15 @@ socket.on('connect', function(){
   });
 });
 
-socket.on('updateRooms', function(rooms, roomName){
-  $('#subtitle').html('');
+socket.on('updateRooms', function(rooms, capacity, roomName){
+  console.log(capacity)
+  if(roomName){
+    $('#subtitle').html('');
+    $('#subtitle').html(roomName);
+  }
   $('#rooms').html('');
-  $('#subtitle').html(roomName);
   $.each(rooms, function(key, value) {
-    $('#rooms').append('<div><a href="#" onclick="switchRoom(\''+value+'\')">' + value + '</a></div>');
+    $('#rooms').append('<div><a href="#" onclick="switchRoom(\''+value+'\')">' + value +  " " +  '(' + capacity[value] + ')</a></div>');
   });
 });
 
