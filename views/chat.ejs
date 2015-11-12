@@ -1,19 +1,33 @@
 <!doctype html>
 <html>
 <head>
-  <title>NodeJS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weeby Chat</title>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
   <link rel="stylesheet" type="text/css" href="/style.css">
+  <link rel="shortcut icon" href="http://www.weeby.co/img/index/ico_IDE.png"/>
 </head>
 <body>
   <div class="container">
     <div class="page-header text-center">
-      <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+      <h1><span class="fa fa-anchor"></span> Chat Area</h1>
       <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
-    <h1>Hello</h1>
-  </div>
 
+    <textarea id="chatArea"></textarea>
+    <br/>
+    <div class="input-group">
+       <input id="inputChat" class="form-control text-input">
+       <span class="input-group-btn">
+          <button id="send-text" class="btn btn-primary">Send</button>
+       </span>
+    </div>
+
+  </div>
+  <br/>
+  <br/>
+  <script src="/bower_components/jQuery/dist/jquery.min.js"></script>
+  <script src="/script.js"></script>
 </body>
 </html>
