@@ -11,9 +11,11 @@
 <body>
   <div class="container">
     <div class="page-header text-center">
-      <h1><span class="fa fa-anchor"></span> Chat Area</h1>
+      <h1 id="subtitle"></h1>
       <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
+
+    <div id="rooms"></div>
 
     <textarea id="chatArea"></textarea>
     <br/>
@@ -27,6 +29,7 @@
   </div>
   <br/>
   <br/>
+  <script src="/socket.io/socket.io.js"></script>
   <script src="/bower_components/jQuery/dist/jquery.min.js"></script>
   <script src="/script.js"></script>
 </body>

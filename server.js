@@ -32,6 +32,6 @@ app.use(express.static(__dirname + '/public')); //set the path to use the css fi
 app.set('views', __dirname + '/views')// change the file path of the template
 app.set('view engine', 'ejs');
 
-require('./server/route')(app, passport);
+require('./server/route')(app, passport, io);
 
 console.log("listening on " + port);

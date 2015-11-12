@@ -30,7 +30,7 @@ module.exports = function(passport){
             return done(err);
           }
           if(user){
-            return done(null, false, req.flash('signupMessage', 'That username is already taken!'));
+            return done(null, false, req.flash('signupMessage', 'Sorry, username taken.'));
           }
           else{
             var newUser = new User();
@@ -61,10 +61,10 @@ module.exports = function(passport){
             return done(err);
           }
           if(!user){
-            return done(null, false, req.flash('loginMessage', 'That username does not exist!'));
+            return done(null, false, req.flash('loginMessage', 'Sorry, username does not exist.'));
           }
           if(!user.validatePassword(password)){ //this uses bcrypt the validate if the password is the same
-            return done(null, false, req.flash('loginMessage', 'That password does not match!'));
+            return done(null, false, req.flash('loginMessage', 'Sorry, the password does not match the username.'));
           }
           else{
             done(null, user);
@@ -90,7 +90,7 @@ module.exports = function(passport){
               var newUser = new User();
               newUser.facebookUser.id = profile.id;
               newUser.facebookUser.token = accessToken;
-              newUser.facebookUser.name = profile.displayName;
+              newUser.facebookUser.username = profile.displayName;
 
               newUser.save(function(err){
                 if(err){

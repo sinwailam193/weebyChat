@@ -1,4 +1,5 @@
 var User = require('./mongo').User
+var Socket = require('./socket');
 
 function isLoggedIn(req, res, next){
   if(req.isAuthenticated()){
@@ -7,7 +8,7 @@ function isLoggedIn(req, res, next){
   res.redirect('/login');
 };
 
-module.exports = function(app, passport){
+module.exports = function(app, passport, io){
 
   app.get('/', function(req, res){
     res.render('index');
@@ -37,7 +38,8 @@ module.exports = function(app, passport){
   })
 
   app.get('/chat', isLoggedIn, function(req, res){
-    res.render('chat', {user: req.user}); //req.user is populated when we went through passport js to authenticate users
+    Socket(io, req.user);
+    res.render('chat'); //req.user is populated when we went through passport js to authenticate users
   });
 
   app.get('/auth/facebook', passport.authenticate('facebook')); 
