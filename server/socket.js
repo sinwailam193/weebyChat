@@ -1,10 +1,10 @@
-var usernames = {};
-var rooms = ['Lobby', 'Chat', 'Hottub', 'Coolchat'];
-var roomCapacity = {
-  Lobby: 0,
-  Chat: 0,
-  Hottub: 0,
-  Coolchat: 0
+var usernames = {}; //set object to contain all the users signin on.
+var rooms = ['Lobby', 'Chat', 'Hottub', 'Weeb']; //the list of open rooms
+var roomCapacity = { //set the count of how many users are in each room
+  Lobby: {},
+  Chat: {},
+  Hottub: {},
+  Weeb: {}
 };
 
 module.exports = function(io){
@@ -15,7 +15,7 @@ module.exports = function(io){
       socket.room = rooms[0];
       usernames[user] = user;
       socket.join(rooms[0]);
-      roomCapacity[rooms[0]] = roomCapacity[rooms[0]]+ 1;
+      roomCapacity[rooms[0]][user] = user; 
       socket.emit('updateChat', 'SERVER', 'Welcome ' + user + ', you have connected to the ' + rooms[0]);
       socket.broadcast.to(rooms[0]).emit('updateChat', 'SERVER', user + ' has connected to this room');
       socket.emit('updateRooms', rooms, roomCapacity, rooms[0]);
@@ -28,9 +28,9 @@ module.exports = function(io){
 
     socket.on('switchRoom', function(newroom){
       socket.leave(socket.room);
-      roomCapacity[socket.room] = roomCapacity[socket.room] - 1;
+      delete roomCapacity[socket.room][socket.username];
       socket.join(newroom);
-      roomCapacity[newroom] = roomCapacity[newroom] + 1;
+      roomCapacity[newroom][socket.username] = socket.username;
       socket.emit('updateChat', 'SERVER', 'you have connected to the '+ newroom);
       socket.broadcast.to(socket.room).emit('updateChat', 'SERVER', socket.username+' has left this room');
       socket.room = newroom;
@@ -44,7 +44,7 @@ module.exports = function(io){
       io.sockets.emit('updateUsers', usernames);
       socket.broadcast.emit('updateChat', 'SERVER', socket.username + ' has left the chat');
       socket.leave(socket.room);
-      roomCapacity[socket.room] = roomCapacity[socket.room] - 1;
+      delete roomCapacity[socket.room][socket.username];
       socket.broadcast.emit('updateRooms', rooms, roomCapacity);
     });
   });

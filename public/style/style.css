@@ -30,19 +30,30 @@ body {
   font-size: 2.5em;
 }
 
-h4 {
+#openRooms {
   float: left;
   position: absolute;
-  margin-left: 100px;
+  margin-left: auto;
+}
+
+#inRoom {
+  float: right;
+  position absolute;
+  margin-left: -50px;
 }
 
 #rooms{
-  margin-left: 100px;
+  margin-left: auto;
   margin-right: auto;
   float: left;
-  border-radius: 10px;
-  padding: 10px 10px 10px 10px;
+  padding: 10px;
   margin-top: 30px;
+}
+
+#users{
+  float: right;
+  margin-top: 30px;
+  margin-left: -50px;
 }
 
 #send-text{

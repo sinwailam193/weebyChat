@@ -9,12 +9,22 @@ socket.on('connect', function(){
 
 socket.on('updateRooms', function(rooms, capacity, roomName){
   if(roomName){
-    $('#subtitle').html('');
     $('#subtitle').html(roomName);
+    $('#users').html('');
+    $.each(capacity[roomName], function(key, value){
+      $('#users').append('<div>' + value + '</div>');
+    });
+  }
+  if($('#subtitle').html()){
+    var currentRoom = $('#subtitle').html();
+    $('#users').html('');
+    $.each(capacity[currentRoom], function(key, value){
+      $('#users').append('<div>' + value + '</div>');
+    });
   }
   $('#rooms').html('');
   $.each(rooms, function(key, value) {
-    $('#rooms').append('<div><a style="color: #008080" href="#" onclick="switchRoom(\''+value+'\')">' + value +  " " +  '(' + capacity[value] + ')</a></div>');
+    $('#rooms').append('<div><a style="color: #008080" href="#" onclick="switchRoom(\''+value+'\')">' + value +  " " +  '(' + Object.keys(capacity[value]).length + ')</a></div>');
   });
 });
 
