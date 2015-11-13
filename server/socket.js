@@ -8,7 +8,6 @@ var roomCapacity = {
 };
 
 module.exports = function(io){
-  //user = user.facebookUser.username || user.user.username;
   io.sockets.on('connection', function (socket) {
 
     socket.on('adduser', function(user){
@@ -32,7 +31,7 @@ module.exports = function(io){
       roomCapacity[socket.room] = roomCapacity[socket.room] - 1;
       socket.join(newroom);
       roomCapacity[newroom] = roomCapacity[newroom] + 1;
-      socket.emit('updateChat', 'SERVER', 'you have connected to '+ newroom);
+      socket.emit('updateChat', 'SERVER', 'you have connected to the '+ newroom);
       socket.broadcast.to(socket.room).emit('updateChat', 'SERVER', socket.username+' has left this room');
       socket.room = newroom;
       socket.broadcast.to(newroom).emit('updateChat', 'SERVER', socket.username+' has joined this room');
@@ -43,7 +42,7 @@ module.exports = function(io){
     socket.on('disconnect', function(){
       delete usernames[socket.username];
       io.sockets.emit('updateUsers', usernames);
-      socket.broadcast.emit('updateChat', 'SERVER', socket.username + ' has disconnected');
+      socket.broadcast.emit('updateChat', 'SERVER', socket.username + ' has left the chat');
       socket.leave(socket.room);
       roomCapacity[socket.room] = roomCapacity[socket.room] - 1;
       socket.broadcast.emit('updateRooms', rooms, roomCapacity);

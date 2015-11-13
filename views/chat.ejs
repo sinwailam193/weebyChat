@@ -3,27 +3,30 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weeby Chat</title>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+  <link rel="stylesheet" href="/style/bootstrap.min.css"> <!-- load bootstrap css -->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-  <link rel="stylesheet" type="text/css" href="/style.css">
+  <link rel="stylesheet" type="text/css" href="/style/style.css">
   <link rel="shortcut icon" href="http://www.weeby.co/img/index/ico_IDE.png"/>
 </head>
-<body>
+<body background="/image/back.jpg">
   <div class="container">
     <div class="page-header text-center">
-      <h1 id="subtitle"></h1>
+      <div id="box">
+        <span class="fa fa-anchor"></span><h2 id="subtitle"></h2>
+      </div>
       <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
 
+    <h4>Open Chat Rooms</h4>
     <div id="rooms"></div>
-
-    <textarea id="chatArea"></textarea>
-    <br/>
     <div class="input-group">
-       <input id="inputChat" class="form-control text-input">
-       <span class="input-group-btn">
-          <button id="send-text" class="btn btn-primary">Send</button>
-       </span>
+      <textarea id="chatArea"></textarea>
+      <br />
+      <br />
+      <input id="inputChat" class="form-control text-input">
+      <span id="send-text" class="input-group-btn">
+        <button class="btn btn-primary">Send</button>
+      </span>
     </div>
 
   </div>
@@ -31,6 +34,6 @@
   <br/>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/bower_components/jQuery/dist/jquery.min.js"></script>
-  <script src="/script.js"></script>
+  <script src="/js/script.js"></script>
 </body>
 </html>

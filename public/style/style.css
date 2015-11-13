@@ -1,0 +1,68 @@
+body { 
+  padding-top:80px; 
+}
+
+#chatArea {
+  height: 300px;
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input-group{
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#inputChat {
+  width: 650px;
+}
+
+#box{
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fa-anchor{
+  float: left;
+  font-size: 2.5em;
+}
+
+h4 {
+  float: left;
+  position: absolute;
+  margin-left: 100px;
+}
+
+#rooms{
+  margin-left: 100px;
+  margin-right: auto;
+  float: left;
+  border-radius: 10px;
+  padding: 10px 10px 10px 10px;
+  margin-top: 30px;
+}
+
+#send-text{
+  float: right;
+}
+
+@media screen and (max-width:699px){
+  .input-group {
+    width: 100%;
+  }
+  #chatArea {
+    width: 100%;
+  }
+  #inputChat {
+    width: 92%;
+  }
+  h4 {
+    margin-left: 0px;
+  }
+  #rooms{
+    margin-left: 0px;
+  }
+}
