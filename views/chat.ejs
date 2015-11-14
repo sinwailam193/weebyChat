@@ -5,39 +5,39 @@
   <title>Weeby Chat</title>
   <link rel="stylesheet" href="/style/bootstrap.min.css"> <!-- load bootstrap css -->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-  <link rel="stylesheet" type="text/css" href="/style/style.css">
+  <link rel="stylesheet" type="text/css" href="/style/style.css"><!-- load style css -->
   <link rel="shortcut icon" href="http://www.weeby.co/img/index/ico_IDE.png"/>
 </head>
-<body background="/image/back.jpg">
+<body background="/image/back.jpg"> <!-- this sets the background for the chat page -->
   <div class="container">
     <div class="page-header text-center">
       <div id="box">
-        <span class="fa fa-anchor"></span><h2 id="subtitle"></h2>
+        <span class="fa fa-anchor"></span><h2 id="subtitle"></h2> <!-- the subtitle that tells the user what room he is in currently -->
       </div>
-      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+      <a href="/logout" class="btn btn-default btn-sm">Logout</a> <!-- this is the logout button and it will send a get request to server -->
     </div>
 
     <h4 id="openRooms">Open Chat Rooms</h4>
-    <div id="rooms"></div>
+    <div id="rooms"></div> <!-- this holds all the open chat rooms -->
 
     <h4 id="inRoom">In the Room</h4>
-    <div id="users"></div>
+    <div id="users"></div> <!-- this holds all the users that are currently in the current room -->
 
     <div class="input-group">
-      <textarea id="chatArea"></textarea>
+      <textarea id="chatArea"></textarea> <!-- this is the chat area where messages will be displayed -->
       <br />
       <br />
-      <input id="inputChat" class="form-control text-input">
+      <input id="inputChat" class="form-control text-input"><!--  this is the input area where users will enter text -->
       <span id="send-text" class="input-group-btn">
-        <button class="btn btn-primary">Send</button>
+        <button class="btn btn-primary">Send</button> <!-- this is the button that will send the text to the server -->
       </span>
     </div>
 
   </div>
   <br/>
   <br/>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="/bower_components/jQuery/dist/jquery.min.js"></script>
-  <script src="/js/script.js"></script>
+  <script src="/socket.io/socket.io.js"></script><!--  loads the socket.io on the client side -->
+  <script src="/bower_components/jQuery/dist/jquery.min.js"></script><!-- loads the jquery library from bower -->
+  <script src="/js/script.js"></script><!--  loads the javascript file that corresponds with this html page -->
 </body>
 </html>

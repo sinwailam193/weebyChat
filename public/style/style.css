@@ -2,6 +2,7 @@ body {
   padding-top:80px; 
 }
 
+/*this is the css for the textarea where all the messages are displayed*/
 #chatArea {
   height: 300px;
   width: 700px;
@@ -9,22 +10,26 @@ body {
   margin-right: auto;
 }
 
+/*this is the css for the div that contains the message area, chat input box, and the send button*/
 .input-group{
   width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
 
+/*this is the css for the chat input box*/
 #inputChat {
   width: 650px;
 }
 
+/*this is the div that holds the subtitle of which room the user is currently in*/
 #box{
   width: 150px;
   margin-left: auto;
   margin-right: auto;
 }
 
+/*the css for anchor logo next to the subtitle*/
 .fa-anchor{
   float: left;
   font-size: 2.5em;
@@ -39,9 +44,10 @@ body {
 #inRoom {
   float: right;
   position absolute;
-  margin-left: -50px;
+  margin-left: -90px;
 }
 
+/*this is the css for the div that holds all the rooms and their status*/
 #rooms{
   margin-left: auto;
   margin-right: auto;
@@ -50,16 +56,19 @@ body {
   margin-top: 30px;
 }
 
+/*this is the css for the div that holds the name of the users that are currently in the room*/
 #users{
   float: right;
   margin-top: 30px;
-  margin-left: -50px;
+  margin-left: -90px;
 }
 
+/*this is the css for the send text button*/
 #send-text{
   float: right;
 }
 
+/*when the app is being used on a mobile device, this enables the website to be responsive and readjust the sizes of the elements*/
 @media screen and (max-width:699px){
   .input-group {
     width: 100%;
