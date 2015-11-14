@@ -10,4 +10,4 @@
 6. In the terminal on the root, change into the server directory, "cd server" 
 7. Then make a file call "config.js" using "touch config.js"
 8. Then copy and paste "exports.mongo = 'mongodb://localhost/<NAMEOFDB>' inside config.js
-7. Go back to root of the folder of your repository in the terminal, run 'node server.js'
+9. Go back to root of the folder of your repository in the terminal, run 'node server.js'
