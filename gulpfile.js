@@ -7,14 +7,14 @@ gulp.task('minify', function(){
   gulp.src('./public/js/*.js')
       .pipe(uglify())
       .pipe(concat('script.min.js'))
-      .pipe(gulp.dest('./public'));
+      .pipe(gulp.dest('./public/production'));
 });
 
 gulp.task('minifyCSS', function(){
   gulp.src('./public/style/style.css')
     .pipe(uglifyCSS())
     .pipe(concat('style.min.css'))
-    .pipe(gulp.dest('./public'));
+    .pipe(gulp.dest('./public/production'));
 });
 
 gulp.task('watch', function(){
