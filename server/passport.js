@@ -86,10 +86,12 @@ module.exports = function(passport){
     function(accessToken, refreshToken, profile, done) {
         process.nextTick(function(){
           User.findOne({'facebookUser.id': profile.id}, function(err, user){
-            if(err)
+            if(err){
               return done(err);
-            if(user)
+            }
+            if(user){
               return done(null, user);
+            }
             else {
               var newUser = new User();
               newUser.facebookUser.id = profile.id;
