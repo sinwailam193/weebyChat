@@ -18,12 +18,8 @@ gulp.task('minifyCSS', function(){
 });
 
 gulp.task('watch', function(){
-  gulp.watch('./public/js/*.js', function(){
-    gulp.run('minify');
-  });
-  gulp.watch('./public/style/style.css', function(){
-    gulp.run('minifyCSS');
-  });
+  gulp.watch('./public/js/*.js', ['minify']);
+  gulp.watch('./public/style/style.css', ['minifyCSS']);
 });
 
 gulp.task('default', ['minify', 'minifyCSS', 'watch']);
